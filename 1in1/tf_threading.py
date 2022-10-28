@@ -2,14 +2,15 @@
 # TensorFlow and tf.keras
 # %%
 # TensorFlow and tf.keras
-
+import os
 import click
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, Dense
-# Commonly used modules
-import numpy as np
-import pandas as pd
+from tensorflow.keras.datasets import mnist
+
+current_dir=os.getcwd()
+import urllib.request
 from time import perf_counter, sleep
 @click.command()
 @click.option(
@@ -20,25 +21,21 @@ from time import perf_counter, sleep
 )
 
 
+
 def cli_function(n):
     print(n)
     tf.config.threading.set_intra_op_parallelism_threads(n)
 
     start = perf_counter()
-
+    
     # Some Code
 
 
 
+ 
     # %%
-    # Set common constants
-    # this_repo_url = 'https://github.com/arunkumarramanan/mit-deep-learning/raw/master/'
-    # this_tutorial_url = this_repo_url + 'tutorial_deep_learning_basics'
-    this_repo_url = 'https://github.com/arunkumarramanan/mit-deep-learning/raw/master/'
-    this_tutorial_url = this_repo_url + 'tutorial_deep_learning_basics'
-    # %%
-    (train_images, train_labels), (test_images, test_labels) = keras.datasets.mnist.load_data()
-    tf
+    (train_images, train_labels), (test_images, test_labels) = mnist.load_data(current_dir + './mnist.npz')
+    
     # reshape images to specify that it's a single channel
     train_images = train_images.reshape(train_images.shape[0], 28, 28, 1)
     test_images = test_images.reshape(test_images.shape[0], 28, 28, 1)
@@ -107,4 +104,6 @@ def cli_function(n):
 
 if __name__ == "__main__":
     cli_function()
+   
+
    

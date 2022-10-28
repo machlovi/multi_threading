@@ -1,10 +1,9 @@
 FROM python:3.8
 
 ADD tf_threading.py .
-
+ADD mnist.npz .
 RUN pip install tensorflow
-RUN pip install numpy 
+RUN pip install click
 
-RUN pip install pandas
 
-CMD ["python" , "./tf_threading.py" ]
+# CMD ["python" , "./tf_threading.py" ]

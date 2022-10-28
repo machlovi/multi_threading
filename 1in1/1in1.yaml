@@ -1,24 +1,3 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: tfthreading
-spec:
-  selector:
-    matchLabels:
-      app: tfthreading
-  template:
-    metadata:
-      labels:
-        app: tfthreading
-    spec:
-      containers:
-      - name: tfthreading
-        image: machlovi/tf_threading:latest
-        ports:
-        - containerPort: 80
-
-
-
 apiVersion: v1
 kind: Pod
 metadata:
@@ -28,10 +7,11 @@ metadata:
   name: @multi-pod
 spec:
   containers:
-  - image: machlovi/tf_threading:latest
+  - image: machlovi/tf_threading:v2
     name: "p1"
-
+    imagePullPolicy: IfNotPresent
     #  Using CMD to acces run the python file and change 
     #  the @threading to a value to a value that will be pass while runing bash file
     command: ["/bin/bash", "-c"]
-    args: ["python /test.py --n @threading "]
+    args: ["python3 /tf_threading.py --n @threading"]
+  restartPolicy: Never
