@@ -56,9 +56,10 @@ def cli_function(n):
     # ### Build the model
     
     # Building the neural network requires configuring the layers of the model, then compiling the model. In many cases, this can be reduced to simply stacking together layers:
-    start = perf_counter()
+    
     i=0
     while i<5:
+        start = perf_counter()
         model = keras.Sequential()
         # 32 convolution filters used each of size 3x3
         model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(28, 28, 1)))
@@ -89,9 +90,9 @@ def cli_function(n):
 
 
 
-    end = perf_counter()
+        end = perf_counter()
 
-    print(f"Time taken to execute code : {end-start}")
+        print(f"Time taken to execute code : {end-start}")
 
     with open('time.txt', 'a') as f:
         print(end-start, file=f)
