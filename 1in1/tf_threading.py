@@ -8,10 +8,11 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, Dense
 from tensorflow.keras.datasets import mnist
-
+from time import perf_counter, sleep
 current_dir=os.getcwd()
 import urllib.request
-from time import perf_counter, sleep
+
+
 @click.command()
 @click.option(
     "--n",

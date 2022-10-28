@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: 5in1
+  name: 5in1
+spec:
+  containers:
+  - image: machlovi/5in1:latest
+    name: "5in1"
+    env:
+     - name: type
+       value: demo1
+
