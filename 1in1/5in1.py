@@ -20,8 +20,16 @@ import urllib.request
     help="The host name of the db",
 )
 
+@click.option(
+    "--epoch",
 
-def cli_function(n):
+    type=int,
+    required=True,
+    help="The host name of the db",
+
+
+)
+def cli_function(n,epoch):
     print(n)
     tf.config.threading.set_intra_op_parallelism_threads(n)
 
@@ -84,7 +92,7 @@ def cli_function(n):
                     metrics=['accuracy'])
 
         # %%
-        history = model.fit(train_images, train_labels, epochs=1)
+        history = model.fit(train_images, train_labels, epochs=epoch)
 
         i+=1
 
