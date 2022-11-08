@@ -13,5 +13,5 @@ spec:
     #  Using CMD to acces run the python file and change 
     #  the @threading to a value to a value that will be pass while runing bash file
     command: ["/bin/bash", "-c"]
-    args: ["python3 /5in1.py --n @threading"]
+    args: ["python3 /5in1.py --n @threading --epoch 5"]
   restartPolicy: Never
